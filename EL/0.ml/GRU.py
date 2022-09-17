@@ -51,6 +51,43 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 device = 'cpu'
 print(device)
 
+import json
+import sys
+# Covert JSON to Dictionsary
+def jsonToDict(jsonString):
+
+    dictionary = json.loads(jsonString)
+    # print(aDict)
+    # print(aDict["splitMethod"])
+    # print(aDict["range"])
+
+    return dictionary
+
+
+
+# Create txt file to store results
+#txtCreater()
+# txtAppender("Output from downstrem ML")
+# txtAppender("------------------------")
+# Convert JSON input to Dictionary
+
+if len(sys.argv) > 1:
+    print("sys.argv[1]: ",sys.argv[1])
+    jsonDict = jsonToDict(sys.argv[1])
+    
+    
+    
+    print("jsonDict[labelFile]: ",jsonDict["labelFile"])
+    print("jsonDict[inputsFile]: ",jsonDict["inputsFile"])
+    
+   
+
+
+
+
+
+
+
 #from google.colab import drive
 #drive.mount('/content/MyDrive/')
 #4/1AX4XfWj4gZil2kGwsKoDw0jn6UuUv1lyfMwtQPErYTPJe9_uq8OKay-tj0I
@@ -65,8 +102,8 @@ labelFile="labels_1540_4classes_icmla_21.pck"
 inputsFile="mvts_1540_icmla_21.pck"
 
 
-labelFile="Sampled_labels.pck"
-inputsFile="Sampled_inputs.pck"
+labelFile=jsonDict["labelFile"]#"Sampled_labels.pck"
+inputsFile=jsonDict["inputsFile"]#"Sampled_inputs.pck"
 #inputsFile="C:\\Users\\XXXX\\Desktop\\Sampled_inputs.pck"
 #labelFile="C:\\Users\\XXXX\\Desktop\\Sampled_labels.pck"
 
